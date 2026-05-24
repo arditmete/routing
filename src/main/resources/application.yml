@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: routing-service
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,info
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+logging:
+  level:
+    com.example.routing: INFO
+    org.springframework.cache: WARN
+
+app:
+  countries:
+    url: https://raw.githubusercontent.com/mledoze/countries/master/countries.json
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
